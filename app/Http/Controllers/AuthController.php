@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('dashboard');
-        } 
+        }
 
 
         // Si las credenciales son incorrectas
@@ -47,9 +48,10 @@ class AuthController extends Controller
     }
 
     public function showRegistrationForm()
-{
-    return view('auth.register');
-}
+    {
+        $roles = Role::all();
+        return view('auth.register', compact('roles'));
+    }
 
 public function register(Request $request)
 {
@@ -70,11 +72,11 @@ public function register(Request $request)
     $user->email = $request->email;
     $user->password = $request->password; // Esto usará el mutador
     $user->save();
-
+    $user->roles()->attach($request->role);
     // Autenticar al usuario
     Auth::login($user);
 
-    return redirect()->intended('dashboard');
+    return redirect()->route('auth.register')->with('success', 'Perfil Creado Corectamente.');
 }
 
 
