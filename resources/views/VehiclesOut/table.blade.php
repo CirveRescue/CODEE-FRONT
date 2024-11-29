@@ -1,26 +1,26 @@
 
  <h2>Salidas Recientes</h2>
  <table class="table table-striped">
-     <thead>
-         <tr>
-             <th>Placa</th>
-             <th>Marca</th>
-             <th>Modelo</th>
-             <th>Color</th>
-             <th>Hora de Salida</th>
-             <th>Dueño</th> <!-- Nuevo campo para mostrar el dueño del vehículo -->
-         </tr>
-     </thead>
-     <tbody>
-         @foreach ($vehiculosAfuera as $vehiculo)
-             <tr>
-                 <td>{{ $vehiculo->placa }}</td>
-                 <td>{{ $vehiculo->marca }}</td>
-                 <td>{{ $vehiculo->modelo }}</td>
-                 <td>{{ $vehiculo->color }}</td>
-                 <td>{{ $vehiculo->fecha_salida }}</td>
-                 <td>{{ $vehiculo->usuario->nombre }}</td> <!-- Mostramos el nombre del usuario/dueño -->
-             </tr>
-         @endforeach
-     </tbody>
- </table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Color</th>
+            <th>Hora de Entrada</th>
+            <th>Dueño</th> <!-- Nuevo campo para mostrar el dueño del vehículo -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($vehiculosAfuera as $vehiculo)
+            <tr>
+                <td>{{ $vehiculo->id }}</td>
+                <td>{{ $vehiculo->vehiculo->Placa }}</td>
+                <td>{{ $vehiculo->vehiculo->Modelo }}</td>
+                <td>{{ $vehiculo->vehiculo->Color }}</td>
+                <td>{{ $vehiculo->fecha_movimiento }}</td>
+                <td>{{ $vehiculo->usuario->Nombre }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>

@@ -3,6 +3,10 @@
 @section('title', 'Editar Usuario')
 
 @section('content')
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class=" shadow-sm">
     <h1>Editar Usuario</h1>
 
     <form action="{{ route('usuarios.update', $usuario->ID_Usuario) }}" method="POST">
@@ -27,4 +31,8 @@
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
+</div>
+</div>
+</div>
+</div>
 @endsection

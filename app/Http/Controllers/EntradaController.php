@@ -9,7 +9,8 @@ class EntradaController extends Controller
 {
     public function index()
     {
-        $vehiculosDentro = Entrada::all();
-        return view('VehiclesIn.index', compact('vehiculosDentro'));
+        $vehiculosDentro = Entrada::with(['vehiculo', 'usuario'])->get();
+
+    return view('VehiclesIn.index', compact('vehiculosDentro'));
     }
 }

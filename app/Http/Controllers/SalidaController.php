@@ -9,7 +9,7 @@ class SalidaController extends Controller
 {
     public function index()
     {
-        $vehiculosAfuera = Salida::all();
+        $vehiculosAfuera = Salida::with(['vehiculo', 'usuario'])->get();
         return view('VehiclesOut.index', compact('vehiculosAfuera'));
     }
 }

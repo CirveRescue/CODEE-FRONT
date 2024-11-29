@@ -7,6 +7,9 @@ use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalidaController;
+use App\Http\Controllers\DispositivoController;
+use App\Http\Controllers\PlacasController;
+
 
 // Rutas de inicio de sesión
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -38,6 +41,18 @@ Route::middleware(['auth'])->group(function () {
     //rutas para las entradas
     Route::get('/Entradas',[EntradaController::class, 'index'])->name('VehiclesIn.index');
     Route::get('/Salidas',[SalidaController::class, 'index'])->name('VehiclesOut.index');
+
+    // Rutas dispositivos
+    Route::get('/dispositivos/create', [DispositivoController::class, 'create'])->name('dispositivos.create');
+    Route::post('/dispositivos', [DispositivoController::class, 'store'])->name('dispositivos.store');
+    Route::get('/dispositivos/index', [DispositivoController::class, 'index'])->name('dispositivos.index');
+    Route::get('/dispositivos/edit/{dispositivo}', [DispositivoController::class, 'edit'])->name('dispositivos.edit');
+    Route::put('/dispositivos/{dispositivo}', [DispositivoController::class, 'update'])->name('dispositivos.update');
+    Route::delete('/dispositivos/{dispositivo}', [DispositivoController::class, 'destroy'])->name('dispositivos.destroy');
+
+    //ruta placa manual
+    Route::post('/placas/manual-entry', [PlacasController::class, 'manualEntry'])->name('placas.manual-entry');
+
 
 });
 

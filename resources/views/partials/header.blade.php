@@ -80,6 +80,32 @@
                 </div>
             </div>
 
+            <div class="nav-item mb-3">
+                <a class="nav-link nav-link-custom d-flex align-items-center" id="gestionarDispositivosBtn" data-bs-toggle="collapse" href="#gestionarDispositivosCollapse" role="button" aria-expanded="false" aria-controls="gestionarDispositivosCollapse">
+                    <i class="fas fa-cogs me-2" style="font-size: 1.2rem;"></i> <!-- Icono de configuraciones -->
+                    <span>Administrar Dispositivo</span>
+                </a>
+                <div class="collapse mt-2" id="gestionarDispositivosCollapse">
+                    <ul class="list-group">
+                        <!-- Enlace para crear un dispositivo -->
+                        <li class="list-group-item {{ request()->routeIs('dispositivos.create') ? 'active' : '' }}">
+                            <a class="text-decoration-none" href="{{ route('dispositivos.create') }}">
+                                <i class="fas fa-plus me-2" style="font-size: 1.2rem;"></i>
+                                Crear Dispositivo
+                            </a>
+                        </li>
+                        <!-- Enlace para listar dispositivos -->
+                        <li class="list-group-item {{ request()->routeIs('dispositivos.index') ? 'active' : '' }}">
+                            <a class="text-decoration-none" href="{{ route('dispositivos.index') }}">
+                                <i class="fas fa-list me-2" style="font-size: 1.2rem;"></i>
+                                Lista de Dispositivos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
         </div>
 
         <!-- Botón de cerrar sesión alineado abajo -->

@@ -3,6 +3,7 @@
 @section('title', 'Lista de Usuarios')
 
 @section('content')
+
     <h1>Lista de Usuarios y sus Vehículos</h1>
 
     <table class="table table-striped">
@@ -57,6 +58,7 @@
     <div class="d-flex justify-content-center mt-4 mb-5">
         {{ $usuarios->links('pagination::bootstrap-4') }}
     </div>
+
 
 
 @endsection

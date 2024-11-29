@@ -13,11 +13,8 @@ class DashboardController extends Controller
         $salidasHoy = Salida::whereDate('fecha_salida', now()->format('Y-m-d'))->count();
         $totalEntradas = Entrada::count();
         $totalSalidas = Salida::count();
+        $vehiculosDentro = Entrada::with(['vehiculo', 'usuario'])->get();
 
-        // Vehículos que están adentro (sin salida registrada)
-        $vehiculosDentro = Entrada::whereNotIn('vehiculo_id', function($query) {
-            $query->select('vehiculo_id')->from('salida');
-        })->get();
 
         return view('dashboard', compact('entradasHoy', 'salidasHoy', 'totalEntradas', 'totalSalidas', 'vehiculosDentro'));
     }

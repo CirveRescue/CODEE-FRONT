@@ -21,4 +21,12 @@ class Usuario extends Model
     {
         return $this->hasMany(Vehiculo::class, 'ID_Usuario', 'ID_Usuario');
     }
+    public function entradas()
+    {
+        return $this->hasMany(Entrada::class, 'usuario_id');
+    }
+    public function salidas()
+    {
+        return $this->hasMany(Salida::class, 'usuario_id');
+    }
 }
